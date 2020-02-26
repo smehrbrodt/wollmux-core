@@ -560,14 +560,16 @@ public class FormModel
       }
 
       // Für jeden Parameter der condition-Funktion eine Abhängigkeit im FormControl registrieren.
-      String[] deps = cond.parameters();
-      for (int i = 0; i < deps.length; ++i)
-      {
-        String elementId = deps[i];
-        if (formControls.containsKey(elementId))
-        {
-          formControls.get(elementId).addDependingGroup(group);
-        }
+      if (cond != null) {
+        String[] deps = cond.parameters();
+        for (int i = 0; i < deps.length; ++i)
+	    {
+	      String elementId = deps[i];
+	      if (formControls.containsKey(elementId))
+	      {
+	        formControls.get(elementId).addDependingGroup(group);
+	      }
+	    }
       }
 
       // Sichtbarkeitsstatus setzen
